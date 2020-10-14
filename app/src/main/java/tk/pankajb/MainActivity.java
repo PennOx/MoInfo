@@ -2,6 +2,7 @@ package tk.pankajb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
     public void search(View view){
         String userInput = nameInputEditText.getText().toString().trim();
         userInput = userInput.replace(" ","%20");
-        SearchQuery query = new SearchQuery(MainActivity.this, userInput);
-        query.execute();
+        Intent intent = new Intent(MainActivity.this,SearchResult.class);
+        intent.putExtra("movieName",userInput);
+        startActivity(intent);
 
     }
 
