@@ -1,68 +1,73 @@
 package tk.pankajb;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Scanner;
 
+import tk.pankajb.SearchQueryResponse.Search;
 import tk.pankajb.SearchQueryResponse.SearchResponse;
 
-public class SearchQuery extends AsyncTask<Void,Void,Void> {
+public class SearchQuery extends AsyncTask<String ,Void, List<Search>> {
 
-    private Context context;
-    private String searchQuery;
+    private WeakReference<SearchResult> weakReference;
 
-    private URL url;
     private HttpURLConnection connection;
+    private URL url;
 
-    public SearchQuery(Context context, String userInput) {
-        this.context = context;
-        this.searchQuery = userInput;
 
-        try {
-            url = new URL(String.format("http://www.omdbapi.com/?apikey=3b00e127&s=%s",searchQuery));
-        } catch (MalformedURLException e) {
-            Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
-        }
+    public SearchQuery(SearchResult context) {
+        weakReference = new WeakReference<>(context);
     }
 
     @Override
-    protected Void doInBackground(Void... voids) {
+    protected List<Search> doInBackground(String... strings) {
 
-        if (url==null){
-            return null;
-        }
+        String movieName = strings[0];
 
-        try {
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
-            connection.connect();
+        SearchResult context = weakReference.get();
 
-            if(connection.getResponseCode()<=200){
+        if (context != null || context.isFinishing()){
+            try {
+                url = new URL(String.format("http://www.omdbapi.com/?apikey=3b00e127&s=%s",movieName));
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setConnectTimeout(5000);
+                connection.setReadTimeout(5000);
+                connection.connect();
 
-                String resJson = new Scanner(connection.getInputStream()).nextLine();
+                if (connection.getResponseCode() <= 200){
 
-                SearchResponse response = new Gson().fromJson(resJson,SearchResponse.class);
+                    String apiRes = new Scanner(connection.getInputStream()).nextLine();
 
-                if (response.getResponse().equals("True")){
+                    SearchResponse response = new Gson().fromJson(apiRes, SearchResponse.class);
 
+                    if (response.getResponse().equals("True")){
+                        return response.getSearch();
+                    }
                 }
 
-            }else{
-                Toast.makeText(context, connection.getResponseMessage(),Toast.LENGTH_LONG).show();
+            } catch (IOException e) {
+                Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
             }
-
-        } catch (IOException e) {
-            Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
         }
+
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(List<Search> searches) {
+        super.onPostExecute(searches);
+
+
     }
 }
