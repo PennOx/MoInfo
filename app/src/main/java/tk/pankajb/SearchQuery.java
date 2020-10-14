@@ -68,6 +68,9 @@ public class SearchQuery extends AsyncTask<String ,Void, List<Search>> {
     protected void onPostExecute(List<Search> searches) {
         super.onPostExecute(searches);
 
+        SearchResult context = weakReference.get();
 
+        context.list = searches;
+        context.updateData();
     }
 }

@@ -4,9 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import java.util.List;
+
+import tk.pankajb.SearchQueryResponse.Search;
+
 public class SearchResult extends AppCompatActivity {
 
     private String query;
+
+    List<Search> list = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +23,10 @@ public class SearchResult extends AppCompatActivity {
 
         SearchQuery queryThread = new SearchQuery(SearchResult.this);
         queryThread.execute(query);
+    }
+
+    public void updateData() {
+
 
     }
 }
