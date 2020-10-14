@@ -3,6 +3,7 @@ package tk.pankajb;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -57,7 +58,7 @@ public class SearchQuery extends AsyncTask<String ,Void, List<Search>> {
                 }
 
             } catch (IOException e) {
-                Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
+                Log.e("Error:- ",e.getMessage());
             }
         }
 
