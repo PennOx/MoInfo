@@ -6,4 +6,5 @@
     <color name="background_main">#2c5057</color>
     <color name="logo_background1">#008e97</color>
     <color name="logo_background2">#f58220</color>
+    <color name="text">#050f17</color>
 </resources>
