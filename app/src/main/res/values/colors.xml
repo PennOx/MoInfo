@@ -7,4 +7,6 @@
     <color name="logo_background1">#008e97</color>
     <color name="logo_background2">#f58220</color>
     <color name="text">#050f17</color>
+    <color name="view1">#d67915</color>
+    <color name="info_back">#2c5057</color>
 </resources>
