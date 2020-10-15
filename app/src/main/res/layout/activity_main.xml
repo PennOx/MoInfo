@@ -74,7 +74,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1"
         app:srcCompat="@drawable/logo_background1" />
 
     <ImageView
@@ -126,7 +126,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar1"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="@color/background_main"

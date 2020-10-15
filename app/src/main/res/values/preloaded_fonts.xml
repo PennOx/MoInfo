@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/assistant_semibold</item>
+        <item>@font/baloo_bhai</item>
+        <item>@font/comfortaa_light</item>
         <item>@font/convergence</item>
     </array>
 </resources>
