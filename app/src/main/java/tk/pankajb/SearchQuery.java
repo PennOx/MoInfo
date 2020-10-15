@@ -1,17 +1,13 @@
 package tk.pankajb;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Scanner;
@@ -40,7 +36,7 @@ public class SearchQuery extends AsyncTask<String ,Void, List<Search>> {
 
         if (context != null || context.isFinishing()){
             try {
-                url = new URL(String.format("http://www.omdbapi.com/?apikey=3b00e127&s=%s",movieName));
+                url = new URL(String.format("https://www.omdbapi.com/?apikey=3b00e127&s=%s",movieName));
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setConnectTimeout(5000);
                 connection.setReadTimeout(5000);

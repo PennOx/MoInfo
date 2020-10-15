@@ -38,6 +38,13 @@ public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder>
         holder.movieTypeText.setText(list.get(position).getType());
         holder.movieYearText.setText(list.get(position).getYear());
         Glide.with(context).load(list.get(position).getChitra()).into(holder.poster);
+
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
     }
 
     @Override
