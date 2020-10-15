@@ -1,6 +1,7 @@
 package tk.pankajb;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Query_ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Query_ViewHolder holder, final int position) {
 
         holder.movieNameText.setText(list.get(position).getTitle());
         holder.movieTypeText.setText(list.get(position).getType());
@@ -42,7 +43,9 @@ public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder>
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                Intent intent = new Intent(context,MovieInformation.class);
+                intent.putExtra("Id",list.get(position).getImdbID());
+                context.startActivity(intent);
             }
         });
     }
