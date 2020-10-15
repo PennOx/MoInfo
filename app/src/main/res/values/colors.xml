@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#1b5154</color>
+    <color name="colorPrimaryDark">#233a54</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="background_main">#2c5057</color>
     <color name="logo_background1">#008e97</color>
@@ -9,4 +9,5 @@
     <color name="text">#050f17</color>
     <color name="view1">#d67915</color>
     <color name="info_back">#2c5057</color>
+    <color name="toolbar">#1b5154</color>
 </resources>
