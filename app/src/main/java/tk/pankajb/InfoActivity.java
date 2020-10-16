@@ -29,6 +29,7 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_information);
+
         movieId = getIntent().getStringExtra("Id");
         name = findViewById(R.id.mi_name);
         genre = findViewById(R.id.mi_genre);

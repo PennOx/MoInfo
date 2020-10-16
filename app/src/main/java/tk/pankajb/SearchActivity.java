@@ -14,9 +14,7 @@ import tk.pankajb.Search.SearchQueryResponse.Search;
 
 public class SearchActivity extends AppCompatActivity {
 
-    private String query;
     private RecyclerView recyclerView;
-    private QueryRecyclerAdapter adapter;
 
     private List<Search> list = null;
 
@@ -29,7 +27,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
-        query = getIntent().getStringExtra("movieName");
+        String query = getIntent().getStringExtra("movieName");
         recyclerView = findViewById(R.id.search_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -38,7 +36,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void updateData() {
-        adapter = new QueryRecyclerAdapter(SearchActivity.this,list);
+        QueryRecyclerAdapter adapter = new QueryRecyclerAdapter(SearchActivity.this, list);
         recyclerView.setAdapter(adapter);
     }
 }
