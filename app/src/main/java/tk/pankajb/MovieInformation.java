@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import tk.pankajb.InfoQueryResponse.InfoResponse;
 
 public class MovieInformation extends AppCompatActivity {
@@ -53,5 +55,8 @@ public class MovieInformation extends AppCompatActivity {
         country.setText(response.getCountry());
         rating.setText(response.getImdbRating());
 
+        if(response.getPoster() != null){
+            Glide.with(this).load(response.getPoster()).into(poster);
+        }
     }
 }
