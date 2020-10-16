@@ -61,6 +61,7 @@ public class InformationQuery extends AsyncTask<String,Void, InfoResponse> {
     protected void onPostExecute(InfoResponse infoResponse) {
         super.onPostExecute(infoResponse);
 
-        
+        MovieInformation context = weakReference.get();
+        context.updateUI(infoResponse);
     }
 }
