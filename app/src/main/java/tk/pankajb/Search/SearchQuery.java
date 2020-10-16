@@ -32,7 +32,6 @@ public class SearchQuery extends AsyncTask<String, Void, List<Search>> {
     protected List<Search> doInBackground(String... strings) {
 
         String movieName = strings[0];
-
         SearchActivity context = weakReference.get();
 
         if (context != null || context.isFinishing()) {
@@ -46,19 +45,16 @@ public class SearchQuery extends AsyncTask<String, Void, List<Search>> {
                 if (connection.getResponseCode() <= 200) {
 
                     String apiRes = new Scanner(connection.getInputStream()).nextLine();
-
                     SearchResponse response = new Gson().fromJson(apiRes, SearchResponse.class);
 
                     if (response.getResponse().equals("True")) {
                         return response.getSearch();
                     }
                 }
-
             } catch (IOException e) {
                 Log.e("Error:- ", e.getMessage());
             }
         }
-
         return null;
     }
 
