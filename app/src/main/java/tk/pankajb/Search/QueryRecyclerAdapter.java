@@ -1,4 +1,4 @@
-package tk.pankajb;
+package tk.pankajb.Search;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,14 +13,16 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import tk.pankajb.SearchQueryResponse.Search;
+import tk.pankajb.InfoActivity;
+import tk.pankajb.R;
+import tk.pankajb.Search.SearchQueryResponse.Search;
 
 public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder> {
 
     private List<Search> list;
     private Context context;
 
-    QueryRecyclerAdapter(Context context, List<Search> list){
+    public QueryRecyclerAdapter(Context context, List<Search> list){
         this.context = context;
         this.list = list;
     }
@@ -46,7 +48,7 @@ public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder>
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,MovieInformation.class);
+                Intent intent = new Intent(context, InfoActivity.class);
                 intent.putExtra("Id",list.get(position).getImdbID());
                 context.startActivity(intent);
             }

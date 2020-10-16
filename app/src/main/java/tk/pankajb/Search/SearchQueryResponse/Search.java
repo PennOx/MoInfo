@@ -1,5 +1,5 @@
 
-package tk.pankajb.SearchQueryResponse;
+package tk.pankajb.Search.SearchQueryResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

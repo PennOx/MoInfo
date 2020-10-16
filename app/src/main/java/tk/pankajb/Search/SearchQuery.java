@@ -1,4 +1,4 @@
-package tk.pankajb;
+package tk.pankajb.Search;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -12,18 +12,19 @@ import java.net.URL;
 import java.util.List;
 import java.util.Scanner;
 
-import tk.pankajb.SearchQueryResponse.Search;
-import tk.pankajb.SearchQueryResponse.SearchResponse;
+import tk.pankajb.SearchActivity;
+import tk.pankajb.Search.SearchQueryResponse.Search;
+import tk.pankajb.Search.SearchQueryResponse.SearchResponse;
 
 public class SearchQuery extends AsyncTask<String ,Void, List<Search>> {
 
-    private WeakReference<SearchResult> weakReference;
+    private WeakReference<SearchActivity> weakReference;
 
     private HttpURLConnection connection;
     private URL url;
 
 
-    public SearchQuery(SearchResult context) {
+    public SearchQuery(SearchActivity context) {
         weakReference = new WeakReference<>(context);
     }
 
@@ -32,7 +33,7 @@ public class SearchQuery extends AsyncTask<String ,Void, List<Search>> {
 
         String movieName = strings[0];
 
-        SearchResult context = weakReference.get();
+        SearchActivity context = weakReference.get();
 
         if (context != null || context.isFinishing()){
             try {
@@ -65,9 +66,9 @@ public class SearchQuery extends AsyncTask<String ,Void, List<Search>> {
     protected void onPostExecute(List<Search> searches) {
         super.onPostExecute(searches);
 
-        SearchResult context = weakReference.get();
+        SearchActivity context = weakReference.get();
 
-        context.list = searches;
+        context.setList(searches);
         context.updateData();
     }
 }

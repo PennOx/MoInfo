@@ -5,19 +5,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import java.util.List;
 
-import tk.pankajb.SearchQueryResponse.Search;
+import tk.pankajb.Search.QueryRecyclerAdapter;
+import tk.pankajb.Search.SearchQuery;
+import tk.pankajb.Search.SearchQueryResponse.Search;
 
-public class SearchResult extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
 
     private String query;
     private RecyclerView recyclerView;
     private QueryRecyclerAdapter adapter;
 
-    List<Search> list = null;
+    private List<Search> list = null;
+
+    public void setList(List<Search> list) {
+        this.list = list;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +33,12 @@ public class SearchResult extends AppCompatActivity {
         recyclerView = findViewById(R.id.search_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        SearchQuery queryThread = new SearchQuery(SearchResult.this);
+        SearchQuery queryThread = new SearchQuery(SearchActivity.this);
         queryThread.execute(query);
     }
 
     public void updateData() {
-        adapter = new QueryRecyclerAdapter(SearchResult.this,list);
+        adapter = new QueryRecyclerAdapter(SearchActivity.this,list);
         recyclerView.setAdapter(adapter);
     }
 }

@@ -8,9 +8,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import tk.pankajb.InfoQueryResponse.InfoResponse;
+import tk.pankajb.Info.InformationQuery;
+import tk.pankajb.Info.InfoQueryResponse.InfoResponse;
 
-public class MovieInformation extends AppCompatActivity {
+public class InfoActivity extends AppCompatActivity {
 
     private String movieId;
     private ImageView poster;

@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText nameInputEditText; //Edit text object
+    private EditText nameInputEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void search(View view){
+    public void search(View view) { // Click listener for search Button
+
         String userInput = nameInputEditText.getText().toString().trim();
-        userInput = userInput.replace(" ","%20");
-        Intent intent = new Intent(MainActivity.this,SearchResult.class);
-        intent.putExtra("movieName",userInput);
+        userInput = userInput.replace(" ", "%20");
+
+        Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+        intent.putExtra("movieName", userInput);
         startActivity(intent);
 
     }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/info_background"
-    tools:context=".MovieInformation">
+    tools:context=".InfoActivity">
 
     <ImageView
         android:id="@+id/mi_poster"
@@ -222,7 +222,7 @@
         android:textColor="@color/text2"
         app:layout_constraintEnd_toEndOf="@+id/text7"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/rating"
+        app:layout_constraintStart_toEndOf="@+id/mi_rating"
         app:layout_constraintTop_toBottomOf="@+id/text7" />
 
     <TextView

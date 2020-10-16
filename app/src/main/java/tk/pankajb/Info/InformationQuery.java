@@ -1,4 +1,4 @@
-package tk.pankajb;
+package tk.pankajb.Info;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -11,16 +11,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-import tk.pankajb.InfoQueryResponse.InfoResponse;
+import tk.pankajb.Info.InfoQueryResponse.InfoResponse;
+import tk.pankajb.InfoActivity;
 
 public class InformationQuery extends AsyncTask<String, Void, InfoResponse> {
 
-    private WeakReference<MovieInformation> weakReference;
+    private WeakReference<InfoActivity> weakReference;
 
     private HttpURLConnection connection;
     private URL url;
 
-    public InformationQuery(MovieInformation context) {
+    public InformationQuery(InfoActivity context) {
         weakReference = new WeakReference<>(context);
     }
 
@@ -29,7 +30,7 @@ public class InformationQuery extends AsyncTask<String, Void, InfoResponse> {
 
         String movieId = strings[0];
 
-        MovieInformation context = weakReference.get();
+        InfoActivity context = weakReference.get();
 
         if (context != null || context.isFinishing()) {
             try {
@@ -60,7 +61,7 @@ public class InformationQuery extends AsyncTask<String, Void, InfoResponse> {
     protected void onPostExecute(InfoResponse infoResponse) {
         super.onPostExecute(infoResponse);
 
-        MovieInformation context = weakReference.get();
+        InfoActivity context = weakReference.get();
         context.updateUI(infoResponse);
     }
 }

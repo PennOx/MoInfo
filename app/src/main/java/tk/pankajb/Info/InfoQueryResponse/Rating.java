@@ -1,5 +1,5 @@
 
-package tk.pankajb.InfoQueryResponse;
+package tk.pankajb.Info.InfoQueryResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
