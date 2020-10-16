@@ -6,8 +6,10 @@
     <color name="background_main">#2c5057</color>
     <color name="logo_background1">#008e97</color>
     <color name="logo_background2">#f58220</color>
-    <color name="text">#050f17</color>
+    <color name="text">#ffffff</color>
     <color name="view1">#d67915</color>
     <color name="info_back">#2c5057</color>
     <color name="toolbar">#1b5154</color>
+    <color name="text2">#e8e8e8</color>
+    <color name="text3">#ffffff</color>
 </resources>
