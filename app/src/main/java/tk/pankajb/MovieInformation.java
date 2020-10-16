@@ -14,5 +14,7 @@ public class MovieInformation extends AppCompatActivity {
         setContentView(R.layout.activity_movie_information);
 
         movieId = getIntent().getStringExtra("Id");
+
+
     }
 }

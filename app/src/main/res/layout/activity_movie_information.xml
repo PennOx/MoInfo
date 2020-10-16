@@ -8,7 +8,7 @@
     tools:context=".MovieInformation">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/mi_poster"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +27,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/mi_poster" />
 
     <TextView
-        android:id="@+id/movie_name"
+        android:id="@+id/mi_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -43,14 +43,14 @@
         app:layout_constraintTop_toTopOf="@+id/head_view" />
 
     <TextView
-        android:id="@+id/genre"
+        android:id="@+id/mi_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/comfortaa_light"
         android:text="genre"
         app:layout_constraintBottom_toBottomOf="@+id/head_view"
-        app:layout_constraintStart_toStartOf="@+id/movie_name"
-        app:layout_constraintTop_toBottomOf="@+id/movie_name"
+        app:layout_constraintStart_toStartOf="@+id/mi_name"
+        app:layout_constraintTop_toBottomOf="@+id/mi_name"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.Toolbar
@@ -113,7 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text8" />
 
     <TextView
-        android:id="@+id/year"
+        android:id="@+id/mi_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/comfortaa_light"
@@ -122,7 +122,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text1" />
 
     <TextView
-        android:id="@+id/language"
+        android:id="@+id/mi_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/comfortaa_light"
@@ -131,7 +131,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text2" />
 
     <TextView
-        android:id="@+id/director"
+        android:id="@+id/mi_director"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/comfortaa_light"
@@ -140,7 +140,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text3" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/mi_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -159,10 +159,10 @@
         android:text="Writer : "
         android:textColor="@color/text"
         app:layout_constraintStart_toStartOf="@+id/text1"
-        app:layout_constraintTop_toBottomOf="@+id/year" />
+        app:layout_constraintTop_toBottomOf="@+id/mi_year" />
 
     <TextView
-        android:id="@+id/writer"
+        android:id="@+id/mi_writer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -182,7 +182,7 @@
         android:text="Rating"
         android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="@+id/head_view"
-        app:layout_constraintTop_toTopOf="@+id/movie_name" />
+        app:layout_constraintTop_toTopOf="@+id/mi_name" />
 
     <TextView
         android:id="@+id/text8"
@@ -196,7 +196,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text4" />
 
     <TextView
-        android:id="@+id/country"
+        android:id="@+id/mi_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -215,7 +215,7 @@
         tools:layout_editor_absoluteY="211dp" />
 
     <TextView
-        android:id="@+id/rating"
+        android:id="@+id/mi_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/convergence"

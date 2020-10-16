@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nameInputEditText = findViewById(R.id.movie_name);
+        nameInputEditText = findViewById(R.id.mi_name);
 
     }
 
