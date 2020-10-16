@@ -15,7 +15,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/movie_default"
+        tools:srcCompat="@drawable/movie_default" />
 
     <View
         android:id="@+id/head_view"
