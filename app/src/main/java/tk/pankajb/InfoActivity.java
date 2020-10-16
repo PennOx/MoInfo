@@ -45,7 +45,7 @@ public class InfoActivity extends AppCompatActivity {
         query.execute(movieId);
     }
 
-    public void updateUI(InfoResponse response){
+    public void updateUI(InfoResponse response) {
 
         name.setText(response.getTitle());
         genre.setText(response.getGenre());
@@ -57,7 +57,7 @@ public class InfoActivity extends AppCompatActivity {
         country.setText(response.getCountry());
         rating.setText(response.getImdbRating());
 
-        if(response.getPoster() != null){
+        if (response.getPoster() != null) {
             Glide.with(this).load(response.getPoster()).into(poster);
         }
     }

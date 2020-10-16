@@ -16,7 +16,7 @@ import tk.pankajb.SearchActivity;
 import tk.pankajb.Search.SearchQueryResponse.Search;
 import tk.pankajb.Search.SearchQueryResponse.SearchResponse;
 
-public class SearchQuery extends AsyncTask<String ,Void, List<Search>> {
+public class SearchQuery extends AsyncTask<String, Void, List<Search>> {
 
     private WeakReference<SearchActivity> weakReference;
 
@@ -35,27 +35,27 @@ public class SearchQuery extends AsyncTask<String ,Void, List<Search>> {
 
         SearchActivity context = weakReference.get();
 
-        if (context != null || context.isFinishing()){
+        if (context != null || context.isFinishing()) {
             try {
-                url = new URL(String.format("https://www.omdbapi.com/?apikey=3b00e127&s=%s",movieName));
+                url = new URL(String.format("https://www.omdbapi.com/?apikey=3b00e127&s=%s", movieName));
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setConnectTimeout(5000);
                 connection.setReadTimeout(5000);
                 connection.connect();
 
-                if (connection.getResponseCode() <= 200){
+                if (connection.getResponseCode() <= 200) {
 
                     String apiRes = new Scanner(connection.getInputStream()).nextLine();
 
                     SearchResponse response = new Gson().fromJson(apiRes, SearchResponse.class);
 
-                    if (response.getResponse().equals("True")){
+                    if (response.getResponse().equals("True")) {
                         return response.getSearch();
                     }
                 }
 
             } catch (IOException e) {
-                Log.e("Error:- ",e.getMessage());
+                Log.e("Error:- ", e.getMessage());
             }
         }
 
