@@ -31,6 +31,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_information);
 
         movieId = getIntent().getStringExtra("Id");
+        poster = findViewById(R.id.mi_poster);
         name = findViewById(R.id.mi_name);
         genre = findViewById(R.id.mi_genre);
         year = findViewById(R.id.mi_year);
@@ -57,7 +58,7 @@ public class InfoActivity extends AppCompatActivity {
         country.setText(response.getCountry());
         rating.setText(response.getImdbRating());
 
-        if (response.getPoster() != null) {
+        if (response.getPoster() != null && !response.getPoster().isEmpty()) {
             Glide.with(this).load(response.getPoster()).into(poster);
         }
     }
