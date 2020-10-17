@@ -2,6 +2,7 @@ package tk.pankajb;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,7 @@ public class SearchActivity extends AppCompatActivity {
     private List<Search> list = null;
 
     private LoadingDialog loading;
+    private Toolbar toolbar;
 
     public void setList(List<Search> list) {
         this.list = list;
@@ -33,12 +35,20 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
+        toolbar = findViewById(R.id.search_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
         loading = new LoadingDialog(SearchActivity.this);
         loading.startLoading();
 
         String query = getIntent().getStringExtra("movieName");
         recyclerView = findViewById(R.id.search_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        getSupportActionBar().setTitle(query);
 
         SearchQuery queryThread = new SearchQuery(SearchActivity.this);
         queryThread.execute(query);
