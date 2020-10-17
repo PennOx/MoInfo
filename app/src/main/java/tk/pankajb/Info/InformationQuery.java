@@ -61,9 +61,13 @@ public class InformationQuery extends AsyncTask<String, Void, InfoResponse> {
     protected void onPostExecute(InfoResponse infoResponse) {
         super.onPostExecute(infoResponse);
 
+        InfoActivity context = weakReference.get();
+
         if (infoResponse != null){
-            InfoActivity context = weakReference.get();
+
             context.updateUI(infoResponse);
+        }else{
+            context.goneWrong();
         }
     }
 }

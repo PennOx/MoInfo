@@ -80,13 +80,9 @@ public class InfoActivity extends AppCompatActivity {
         loading.stopLoading();
     }
 
-    public void goneWrong(String msg){
+    public void goneWrong(){
 
-        Intent wrongIntent = new Intent();
-
-        wrongIntent.putExtra("msg",msg);
-
-        setResult(400,wrongIntent);
+        setResult(400);
         finish();
     }
 }
