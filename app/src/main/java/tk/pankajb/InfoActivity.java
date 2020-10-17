@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import tk.pankajb.CustomWidgets.LoadingDialog;
 import tk.pankajb.Info.InformationQuery;
 import tk.pankajb.Info.InfoQueryResponse.InfoResponse;
 
@@ -25,6 +26,8 @@ public class InfoActivity extends AppCompatActivity {
     private TextView country;
     private TextView rating;
 
+    private LoadingDialog loading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,9 @@ public class InfoActivity extends AppCompatActivity {
         writer = findViewById(R.id.mi_writer);
         country = findViewById(R.id.mi_country);
         rating = findViewById(R.id.mi_rating);
+
+        loading = new LoadingDialog(InfoActivity.this);
+        loading.startLoading();
 
         InformationQuery query = new InformationQuery(this);
         query.execute(movieId);
@@ -61,5 +67,7 @@ public class InfoActivity extends AppCompatActivity {
         if (response.getPoster() != null && !response.getPoster().isEmpty()) {
             Glide.with(this).load(response.getPoster()).into(poster);
         }
+
+        loading.stopLoading();
     }
 }
