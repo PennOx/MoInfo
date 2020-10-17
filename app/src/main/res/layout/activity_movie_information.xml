@@ -5,55 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/info_background"
-    tools:context=".InfoActivity">
-
-    <ImageView
-        android:id="@+id/mi_poster"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@drawable/movie_default"
-        tools:srcCompat="@drawable/movie_default" />
-
-    <View
-        android:id="@+id/head_view"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/view_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mi_poster" />
-
-    <TextView
-        android:id="@+id/mi_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/convergence"
-        android:text="Movie Name"
-        android:textColor="@color/text"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/head_view"
-        app:layout_constraintTop_toTopOf="@+id/head_view" />
-
-    <TextView
-        android:id="@+id/mi_genre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="genre"
-        android:textColor="@color/text2"
-        app:layout_constraintBottom_toBottomOf="@+id/head_view"
-        app:layout_constraintStart_toStartOf="@+id/mi_name"
-        app:layout_constraintTop_toBottomOf="@+id/mi_name"
-        app:layout_constraintVertical_bias="0.0" />
+    tools:context=".MovieInformation">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -67,172 +19,230 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/convergence"
-        android:text="Year"
-        android:textColor="@color/text"
-        app:layout_constraintStart_toStartOf="@+id/head_view"
-        app:layout_constraintTop_toBottomOf="@+id/head_view" />
-
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:fontFamily="@font/convergence"
-        android:text="Language"
-        android:textColor="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/text1"
-        app:layout_constraintStart_toEndOf="@+id/text1"
-        app:layout_constraintTop_toTopOf="@+id/text1"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:fontFamily="@font/convergence"
-        android:text="Director"
-        android:textColor="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/text2"
-        app:layout_constraintStart_toEndOf="@+id/text2"
-        app:layout_constraintTop_toTopOf="@+id/text2" />
-
-    <TextView
-        android:id="@+id/text5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/convergence"
-        android:text="Description :"
-        android:textColor="@color/text"
-        app:layout_constraintStart_toStartOf="@+id/text8"
-        app:layout_constraintTop_toBottomOf="@+id/text8" />
-
-    <TextView
-        android:id="@+id/mi_year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="2020"
-        android:textColor="@color/text2"
-        app:layout_constraintStart_toStartOf="@+id/text1"
-        app:layout_constraintTop_toBottomOf="@+id/text1" />
-
-    <TextView
-        android:id="@+id/mi_language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="English,Hindi"
-        android:textColor="@color/text2"
-        app:layout_constraintStart_toStartOf="@+id/text2"
-        app:layout_constraintTop_toBottomOf="@+id/text2" />
-
-    <TextView
-        android:id="@+id/mi_director"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="yash,pankaj"
-        android:textColor="@color/text2"
-        app:layout_constraintStart_toStartOf="@+id/text3"
-        app:layout_constraintTop_toBottomOf="@+id/text3" />
-
-    <TextView
-        android:id="@+id/mi_description"
+    <ImageView
+        android:id="@+id/mi_poster"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="Here yoou can give description about the movie or web."
-        android:textColor="@color/text2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/text5"
-        app:layout_constraintTop_toBottomOf="@+id/text5" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/movie_default"
+        tools:srcCompat="@drawable/movie_default" />
 
-    <TextView
-        android:id="@+id/text4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/convergence"
-        android:text="Writer : "
-        android:textColor="@color/text"
-        app:layout_constraintStart_toStartOf="@+id/text1"
-        app:layout_constraintTop_toBottomOf="@+id/mi_year" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/head_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/view_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mi_poster"
+        app:layout_constraintVertical_bias="1.0">
 
-    <TextView
-        android:id="@+id/mi_writer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="Yashraj Mandloi"
-        android:textSize="11dp"
-        android:textColor="@color/text2"
-        app:layout_constraintBottom_toBottomOf="@+id/text4"
-        app:layout_constraintStart_toEndOf="@+id/text4"
-        app:layout_constraintTop_toTopOf="@+id/text4" />
+        <TextView
+            android:id="@+id/mi_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/convergence"
+            android:text="Movie Name"
+            android:textColor="@color/text"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/text7"
+            app:layout_constraintStart_toStartOf="@+id/head_view"
+            app:layout_constraintTop_toTopOf="@+id/head_view" />
 
-    <TextView
-        android:id="@+id/text7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:fontFamily="@font/convergence"
-        android:text="Rating"
-        android:textColor="@color/text"
-        app:layout_constraintEnd_toEndOf="@+id/head_view"
-        app:layout_constraintTop_toTopOf="@+id/mi_name" />
+        <TextView
+            android:id="@+id/mi_genre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="genre"
+            android:textColor="@color/text2"
+            app:layout_constraintBottom_toBottomOf="@+id/head_view"
+            app:layout_constraintEnd_toStartOf="@+id/text7"
+            app:layout_constraintStart_toStartOf="@+id/mi_name"
+            app:layout_constraintTop_toBottomOf="@+id/mi_name"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/text8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/convergence"
-        android:text="Country :"
-        android:textColor="@color/text"
-        app:layout_constraintStart_toStartOf="@+id/text4"
-        app:layout_constraintTop_toBottomOf="@+id/text4" />
 
-    <TextView
-        android:id="@+id/mi_country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="India"
-        android:textColor="@color/text2"
-        app:layout_constraintBottom_toBottomOf="@+id/text8"
-        app:layout_constraintStart_toEndOf="@+id/text8"
-        app:layout_constraintTop_toTopOf="@+id/text8" />
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/convergence"
+            android:text="Year"
+            android:textColor="@color/text"
+            app:layout_constraintStart_toStartOf="@+id/mi_genre"
+            app:layout_constraintTop_toBottomOf="@+id/mi_genre" />
 
-    <TextView
-        android:id="@+id/text10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="/10"
-        android:textColor="@color/text2"
-        app:layout_constraintEnd_toEndOf="@+id/text7"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/mi_rating"
-        app:layout_constraintTop_toBottomOf="@+id/text7" />
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:fontFamily="@font/convergence"
+            android:text="Language"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/text1"
+            app:layout_constraintStart_toEndOf="@+id/text1"
+            app:layout_constraintTop_toTopOf="@+id/text1"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/mi_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/convergence"
-        android:text="8.0"
-        android:textColor="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/text10"
-        app:layout_constraintStart_toStartOf="@+id/text7"
-        app:layout_constraintTop_toBottomOf="@+id/text7" />
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/convergence"
+            android:text="Director"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/text2"
+            app:layout_constraintEnd_toEndOf="@+id/text10"
+            app:layout_constraintStart_toEndOf="@+id/text2"
+            app:layout_constraintTop_toTopOf="@+id/text2" />
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/convergence"
+            android:text="Description :"
+            android:textColor="@color/text"
+            app:layout_constraintStart_toStartOf="@+id/text8"
+            app:layout_constraintTop_toBottomOf="@+id/text8" />
+
+        <TextView
+            android:id="@+id/mi_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="2020"
+            android:textColor="@color/text2"
+            app:layout_constraintStart_toStartOf="@+id/text1"
+            app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+        <TextView
+            android:id="@+id/mi_language"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="hindi english"
+            android:textColor="@color/text2"
+            app:layout_constraintEnd_toStartOf="@+id/mi_director"
+            app:layout_constraintStart_toStartOf="@+id/text2"
+            app:layout_constraintTop_toBottomOf="@+id/text2" />
+
+        <TextView
+            android:id="@+id/mi_director"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="yash,pankaj"
+            android:textColor="@color/text2"
+            app:layout_constraintEnd_toEndOf="@+id/text10"
+            app:layout_constraintStart_toStartOf="@+id/text3"
+            app:layout_constraintTop_toBottomOf="@+id/text3" />
+
+        <TextView
+            android:id="@+id/mi_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="Here yoou can give description about the movie or web."
+            android:textColor="@color/text2"
+            app:layout_constraintEnd_toEndOf="@+id/mi_country"
+            app:layout_constraintStart_toStartOf="@+id/text5"
+            app:layout_constraintTop_toBottomOf="@+id/text5" />
+
+        <TextView
+            android:id="@+id/text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/convergence"
+            android:text="Writer : "
+            android:textColor="@color/text"
+            app:layout_constraintStart_toStartOf="@+id/text1"
+            app:layout_constraintTop_toBottomOf="@+id/mi_director" />
+
+        <TextView
+            android:id="@+id/mi_writer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="Yashraj Mandloi"
+            android:textColor="@color/text2"
+            android:textSize="11dp"
+            app:layout_constraintEnd_toEndOf="@+id/mi_director"
+            app:layout_constraintStart_toEndOf="@+id/text4"
+            app:layout_constraintTop_toTopOf="@+id/text4" />
+
+        <TextView
+            android:id="@+id/text7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/convergence"
+            android:text="Rating"
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="@+id/head_view"
+            app:layout_constraintTop_toBottomOf="@+id/mi_name" />
+
+        <TextView
+            android:id="@+id/text8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/convergence"
+            android:text="Country :"
+            android:textColor="@color/text"
+            app:layout_constraintStart_toStartOf="@+id/text4"
+            app:layout_constraintTop_toBottomOf="@+id/mi_writer" />
+
+        <TextView
+            android:id="@+id/mi_country"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="India"
+            android:textColor="@color/text2"
+            app:layout_constraintBottom_toBottomOf="@+id/text8"
+            app:layout_constraintEnd_toEndOf="@+id/mi_writer"
+            app:layout_constraintStart_toEndOf="@+id/text8"
+            app:layout_constraintTop_toTopOf="@+id/text8" />
+
+        <TextView
+            android:id="@+id/text10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/10"
+            android:textColor="@color/text2"
+            app:layout_constraintEnd_toEndOf="@+id/text7"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/mi_rating"
+            app:layout_constraintTop_toBottomOf="@+id/text7" />
+
+        <TextView
+            android:id="@+id/mi_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/convergence"
+            android:text="8.0"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/text10"
+            app:layout_constraintStart_toStartOf="@+id/text7"
+            app:layout_constraintTop_toBottomOf="@+id/text7" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
