@@ -1,10 +1,10 @@
 package tk.pankajb;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import tk.pankajb.CustomWidgets.LoadingDialog;
 import tk.pankajb.Info.InformationQuery;
 import tk.pankajb.Info.InfoQueryResponse.InfoResponse;
+import tk.pankajb.Info.PosterActivity;
 
 public class InfoActivity extends AppCompatActivity {
 
@@ -27,7 +28,7 @@ public class InfoActivity extends AppCompatActivity {
     private TextView writer;
     private TextView country;
     private TextView rating;
-    private Toolbar toolbar;
+    private String imageUrl;
 
     private LoadingDialog loading;
 
@@ -47,11 +48,6 @@ public class InfoActivity extends AppCompatActivity {
         writer = findViewById(R.id.mi_writer);
         country = findViewById(R.id.mi_country);
         rating = findViewById(R.id.mi_rating);
-        toolbar = findViewById(R.id.mi_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         loading = new LoadingDialog(InfoActivity.this);
         loading.startLoading();
@@ -62,7 +58,6 @@ public class InfoActivity extends AppCompatActivity {
 
     public void updateUI(InfoResponse response) {
 
-        getSupportActionBar().setTitle(response.getTitle());
         name.setText(response.getTitle());
         genre.setText(response.getGenre());
         year.setText(response.getYear());
@@ -75,14 +70,24 @@ public class InfoActivity extends AppCompatActivity {
 
         if (response.getPoster() != null && !response.getPoster().isEmpty()) {
             Glide.with(this).load(response.getPoster()).into(poster);
+            imageUrl = response.getPoster();
         }
 
         loading.stopLoading();
     }
 
-    public void goneWrong(){
+    public void goneWrong(String msg){
 
-        setResult(400);
+        Intent wrongIntent = new Intent();
+
+        wrongIntent.putExtra("msg",msg);
+
+        setResult(400,wrongIntent);
         finish();
+    }
+    public void showPoster(View view){
+        Intent intent = new Intent(InfoActivity.this, PosterActivity.class);
+        intent.putExtra("imageUrl",imageUrl);
+        startActivity(intent);
     }
 }

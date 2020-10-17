@@ -22,12 +22,14 @@
     <ImageView
         android:id="@+id/mi_poster"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/head_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mi_toolbar"
         app:srcCompat="@drawable/movie_default"
+        android:onClick="showPoster"
         tools:srcCompat="@drawable/movie_default" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,14 +37,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/view_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mi_poster"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/mi_name"
@@ -167,7 +169,7 @@
         <TextView
             android:id="@+id/mi_director"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:fontFamily="@font/comfortaa_light"
             android:text="yash,pankaj"
             android:textColor="@color/text2"
@@ -180,7 +182,7 @@
             android:id="@+id/text4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/convergence"
             android:text="Writer : "
             android:textColor="@color/text"
