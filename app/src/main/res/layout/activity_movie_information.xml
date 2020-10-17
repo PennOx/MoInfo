@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/info_background"
-    tools:context=".MovieInformation">
+    tools:context=".InfoActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -74,6 +74,39 @@
 
 
         <TextView
+            android:id="@+id/text7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/convergence"
+            android:text="Rating"
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="@+id/head_view"
+            app:layout_constraintTop_toBottomOf="@+id/mi_name" />
+
+        <TextView
+            android:id="@+id/text10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/10"
+            android:textColor="@color/text2"
+            app:layout_constraintEnd_toEndOf="@+id/text7"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/mi_rating"
+            app:layout_constraintTop_toBottomOf="@+id/text7" />
+
+        <TextView
+            android:id="@+id/mi_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/convergence"
+            android:text="8.0"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/text10"
+            app:layout_constraintStart_toStartOf="@+id/text7"
+            app:layout_constraintTop_toBottomOf="@+id/text7" />
+
+        <TextView
             android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,6 +116,16 @@
             android:textColor="@color/text"
             app:layout_constraintStart_toStartOf="@+id/mi_genre"
             app:layout_constraintTop_toBottomOf="@+id/mi_genre" />
+
+        <TextView
+            android:id="@+id/mi_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="2020"
+            android:textColor="@color/text2"
+            app:layout_constraintStart_toStartOf="@+id/text1"
+            app:layout_constraintTop_toBottomOf="@+id/text1" />
 
         <TextView
             android:id="@+id/text2"
@@ -98,39 +141,6 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/text3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/convergence"
-            android:text="Director"
-            android:textColor="@color/text"
-            app:layout_constraintBottom_toBottomOf="@+id/text2"
-            app:layout_constraintEnd_toEndOf="@+id/text10"
-            app:layout_constraintStart_toEndOf="@+id/text2"
-            app:layout_constraintTop_toTopOf="@+id/text2" />
-
-        <TextView
-            android:id="@+id/text5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/convergence"
-            android:text="Description :"
-            android:textColor="@color/text"
-            app:layout_constraintStart_toStartOf="@+id/text8"
-            app:layout_constraintTop_toBottomOf="@+id/text8" />
-
-        <TextView
-            android:id="@+id/mi_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/comfortaa_light"
-            android:text="2020"
-            android:textColor="@color/text2"
-            app:layout_constraintStart_toStartOf="@+id/text1"
-            app:layout_constraintTop_toBottomOf="@+id/text1" />
-
-        <TextView
             android:id="@+id/mi_language"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -143,26 +153,28 @@
             app:layout_constraintTop_toBottomOf="@+id/text2" />
 
         <TextView
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/convergence"
+            android:text="Director"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/text2"
+            app:layout_constraintEnd_toEndOf="@+id/text10"
+            app:layout_constraintStart_toEndOf="@+id/text2"
+            app:layout_constraintTop_toTopOf="@+id/text2" />
+
+        <TextView
             android:id="@+id/mi_director"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_light"
             android:text="yash,pankaj"
             android:textColor="@color/text2"
+            app:layout_constraintBottom_toBottomOf="@+id/mi_language"
             app:layout_constraintEnd_toEndOf="@+id/text10"
             app:layout_constraintStart_toStartOf="@+id/text3"
             app:layout_constraintTop_toBottomOf="@+id/text3" />
-
-        <TextView
-            android:id="@+id/mi_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/comfortaa_light"
-            android:text="Here yoou can give description about the movie or web."
-            android:textColor="@color/text2"
-            app:layout_constraintEnd_toEndOf="@+id/mi_country"
-            app:layout_constraintStart_toStartOf="@+id/text5"
-            app:layout_constraintTop_toBottomOf="@+id/text5" />
 
         <TextView
             android:id="@+id/text4"
@@ -189,17 +201,6 @@
             app:layout_constraintTop_toTopOf="@+id/text4" />
 
         <TextView
-            android:id="@+id/text7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:fontFamily="@font/convergence"
-            android:text="Rating"
-            android:textColor="@color/text"
-            app:layout_constraintEnd_toEndOf="@+id/head_view"
-            app:layout_constraintTop_toBottomOf="@+id/mi_name" />
-
-        <TextView
             android:id="@+id/text8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -224,25 +225,26 @@
             app:layout_constraintTop_toTopOf="@+id/text8" />
 
         <TextView
-            android:id="@+id/text10"
+            android:id="@+id/text5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="/10"
-            android:textColor="@color/text2"
-            app:layout_constraintEnd_toEndOf="@+id/text7"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/mi_rating"
-            app:layout_constraintTop_toBottomOf="@+id/text7" />
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/convergence"
+            android:text="Description :"
+            android:textColor="@color/text"
+            app:layout_constraintStart_toStartOf="@+id/text8"
+            app:layout_constraintTop_toBottomOf="@+id/text8" />
 
         <TextView
-            android:id="@+id/mi_rating"
-            android:layout_width="wrap_content"
+            android:id="@+id/mi_description"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/convergence"
-            android:text="8.0"
-            android:textColor="@color/text"
-            app:layout_constraintBottom_toBottomOf="@+id/text10"
-            app:layout_constraintStart_toStartOf="@+id/text7"
-            app:layout_constraintTop_toBottomOf="@+id/text7" />
+            android:fontFamily="@font/comfortaa_light"
+            android:text="Here yoou can give description about the movie or web."
+            android:textColor="@color/text2"
+            app:layout_constraintEnd_toEndOf="@+id/mi_country"
+            app:layout_constraintStart_toStartOf="@+id/text5"
+            app:layout_constraintTop_toBottomOf="@+id/text5" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
