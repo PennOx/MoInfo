@@ -1,24 +1,28 @@
 package tk.pankajb;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.List;
 
+import tk.pankajb.CustomWidgets.LoadingDialog;
 import tk.pankajb.Search.QueryRecyclerAdapter;
 import tk.pankajb.Search.SearchQuery;
 import tk.pankajb.Search.SearchQueryResponse.Search;
 
 public class SearchActivity extends AppCompatActivity {
 
-    private String query;
     private RecyclerView recyclerView;
-    private QueryRecyclerAdapter adapter;
 
     private List<Search> list = null;
+
+    private LoadingDialog loading;
 
     public void setList(List<Search> list) {
         this.list = list;
@@ -29,7 +33,10 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
-        query = getIntent().getStringExtra("movieName");
+        loading = new LoadingDialog(SearchActivity.this);
+        loading.startLoading();
+
+        String query = getIntent().getStringExtra("movieName");
         recyclerView = findViewById(R.id.search_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -38,7 +45,23 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void updateData() {
-        adapter = new QueryRecyclerAdapter(SearchActivity.this,list);
+        QueryRecyclerAdapter adapter = new QueryRecyclerAdapter(SearchActivity.this, list);
         recyclerView.setAdapter(adapter);
+        loading.stopLoading();
+    }
+
+    public void noResult() {
+        loading.stopLoading();
+        setResult(404);
+        finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode==1 && resultCode == 400){
+            Toast.makeText(this, data.getStringExtra("msg"),Toast.LENGTH_LONG).show();
+        }
     }
 }
