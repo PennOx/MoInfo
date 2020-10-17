@@ -64,7 +64,12 @@ public class SearchQuery extends AsyncTask<String, Void, List<Search>> {
 
         SearchActivity context = weakReference.get();
 
-        context.setList(searches);
-        context.updateData();
+        if(searches != null && !searches.isEmpty()){
+
+            context.setList(searches);
+            context.updateData();
+        }else {
+            context.noResult();
+        }
     }
 }

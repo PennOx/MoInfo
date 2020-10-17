@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class SearchActivity extends AppCompatActivity {
     public void updateData() {
         QueryRecyclerAdapter adapter = new QueryRecyclerAdapter(SearchActivity.this, list);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void noResult() {
+        setResult(404);
+        finish();
     }
 }
