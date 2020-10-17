@@ -1,5 +1,6 @@
 package tk.pankajb.Search;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -20,9 +21,9 @@ import tk.pankajb.Search.SearchQueryResponse.Search;
 public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder> {
 
     private List<Search> list;
-    private Context context;
+    private Activity context;
 
-    public QueryRecyclerAdapter(Context context, List<Search> list) {
+    public QueryRecyclerAdapter(Activity context, List<Search> list) {
         this.context = context;
         this.list = list;
     }
@@ -50,7 +51,7 @@ public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder>
             public void onClick(View view) {
                 Intent intent = new Intent(context, InfoActivity.class);
                 intent.putExtra("Id", list.get(position).getImdbID());
-                context.startActivity(intent);
+                context.startActivityForResult(intent,1);
             }
         });
     }

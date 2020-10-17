@@ -2,6 +2,7 @@ package tk.pankajb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -69,5 +70,15 @@ public class InfoActivity extends AppCompatActivity {
         }
 
         loading.stopLoading();
+    }
+
+    public void goneWrong(String msg){
+
+        Intent wrongIntent = new Intent();
+
+        wrongIntent.putExtra("msg",msg);
+
+        setResult(400,wrongIntent);
+        finish();
     }
 }
