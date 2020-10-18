@@ -133,12 +133,12 @@
             android:id="@+id/text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="5dp"
             android:fontFamily="@font/convergence"
             android:text="Language"
             android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="@+id/text1"
-            app:layout_constraintStart_toEndOf="@+id/text1"
+            app:layout_constraintStart_toEndOf="@+id/mi_year"
             app:layout_constraintTop_toTopOf="@+id/text1"
             app:layout_constraintVertical_bias="1.0" />
 
