@@ -67,7 +67,7 @@ public class InformationQuery extends AsyncTask<String, Void, InfoResponse> {
 
             context.updateUI(infoResponse);
         }else{
-            context.goneWrong();
+            context.goneWrong("Results not found");
         }
     }
 }

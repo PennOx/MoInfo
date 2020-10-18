@@ -18,7 +18,7 @@ public class PosterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poster);
         poster = findViewById(R.id.poster_only);
-        imageUrl = getIntent().getExtras().toString();
+        imageUrl = getIntent().getStringExtra("imageUrl");
 
         if (imageUrl != null && !imageUrl.isEmpty()) {
             Glide.with(PosterActivity.this).load(imageUrl).into(poster);
