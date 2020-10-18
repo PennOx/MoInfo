@@ -1,6 +1,7 @@
 package tk.pankajb;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class InfoActivity extends AppCompatActivity {
     private TextView country;
     private TextView rating;
     private String imageUrl;
+    private Toolbar toolbar;
 
     private LoadingDialog loading;
 
@@ -48,6 +50,12 @@ public class InfoActivity extends AppCompatActivity {
         writer = findViewById(R.id.mi_writer);
         country = findViewById(R.id.mi_country);
         rating = findViewById(R.id.mi_rating);
+
+        toolbar = findViewById(R.id.mi_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("MoInfo");
 
         loading = new LoadingDialog(InfoActivity.this);
         loading.startLoading();

@@ -39,6 +39,7 @@ public class SearchActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("MoInfo");
 
 
         loading = new LoadingDialog(SearchActivity.this);
@@ -48,7 +49,6 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.search_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        getSupportActionBar().setTitle(query);
 
         SearchQuery queryThread = new SearchQuery(SearchActivity.this);
         queryThread.execute(query);
