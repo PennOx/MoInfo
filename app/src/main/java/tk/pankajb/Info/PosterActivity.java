@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -25,6 +26,12 @@ public class PosterActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("MoInfo");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         poster = findViewById(R.id.poster_only);
         imageUrl = getIntent().getStringExtra("imageUrl");
@@ -32,5 +39,6 @@ public class PosterActivity extends AppCompatActivity {
         if (imageUrl != null && !imageUrl.isEmpty()) {
             Glide.with(PosterActivity.this).load(imageUrl).into(poster);
         }
+
     }
 }

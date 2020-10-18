@@ -55,7 +55,6 @@ public class InfoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("MoInfo");
 
         loading = new LoadingDialog(InfoActivity.this);
         loading.startLoading();
@@ -80,6 +79,8 @@ public class InfoActivity extends AppCompatActivity {
             Glide.with(this).load(response.getPoster()).into(poster);
             imageUrl = response.getPoster();
         }
+
+        getSupportActionBar().setTitle(response.getTitle());
 
         loading.stopLoading();
     }
