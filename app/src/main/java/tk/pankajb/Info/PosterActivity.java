@@ -37,7 +37,7 @@ public class PosterActivity extends AppCompatActivity {
         imageUrl = getIntent().getStringExtra("imageUrl");
 
         if (imageUrl != null && !imageUrl.isEmpty()) {
-            Glide.with(PosterActivity.this).load(imageUrl).into(poster);
+            Glide.with(PosterActivity.this).load(imageUrl).placeholder(R.drawable.movie_default).into(poster);
         }
 
     }

@@ -43,7 +43,9 @@ public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder>
         holder.movieYearText.setText(list.get(position).getYear());
 
         if (list.get(position).getChitra() != null) {
-            Glide.with(context).load(list.get(position).getChitra()).into(holder.poster);
+            Glide.with(context).load(list.get(position).getChitra()).placeholder(R.drawable.movie_default).into(holder.poster);
+        }else {
+            Glide.with(context).load(context.getDrawable(R.drawable.movie_default)).placeholder(R.drawable.movie_default).into(holder.poster);
         }
 
         holder.view.setOnClickListener(new View.OnClickListener() {

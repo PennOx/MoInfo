@@ -39,7 +39,7 @@ public class SearchActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
 
         loading = new LoadingDialog(SearchActivity.this);
         loading.startLoading();
@@ -47,8 +47,6 @@ public class SearchActivity extends AppCompatActivity {
         String query = getIntent().getStringExtra("movieName");
         recyclerView = findViewById(R.id.search_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        getSupportActionBar().setTitle(query.replace("%20"," "));
 
 
         SearchQuery queryThread = new SearchQuery(SearchActivity.this);

@@ -55,6 +55,7 @@ public class InfoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,11 +84,9 @@ public class InfoActivity extends AppCompatActivity {
         rating.setText(response.getImdbRating());
 
         if (response.getPoster() != null && !response.getPoster().isEmpty()) {
-            Glide.with(this).load(response.getPoster()).into(poster);
+            Glide.with(this).load(response.getPoster()).placeholder(R.drawable.movie_default).into(poster);
             imageUrl = response.getPoster();
         }
-
-        getSupportActionBar().setTitle(response.getTitle());
 
         loading.stopLoading();
     }
