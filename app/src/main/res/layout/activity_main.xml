@@ -58,6 +58,7 @@
             android:background="@drawable/button_back"
             android:onClick="search"
             android:text="Search"
+            android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
