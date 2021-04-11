@@ -8,21 +8,18 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Scanner;
 
-import tk.pankajb.SearchActivity;
 import tk.pankajb.Search.SearchQueryResponse.Search;
 import tk.pankajb.Search.SearchQueryResponse.SearchResponse;
+import tk.pankajb.SearchActivity;
 
 public class SearchQuery extends AsyncTask<String, Void, List<Search>> {
 
-    private WeakReference<SearchActivity> weakReference;
-
-    private HttpURLConnection connection;
-    private URL url;
-
+    private final WeakReference<SearchActivity> weakReference;
 
     public SearchQuery(SearchActivity context) {
         weakReference = new WeakReference<>(context);
@@ -31,23 +28,16 @@ public class SearchQuery extends AsyncTask<String, Void, List<Search>> {
     @Override
     protected List<Search> doInBackground(String... strings) {
 
-        String movieName = strings[0];
-        SearchActivity context = weakReference.get();
-
-        if (context != null || context.isFinishing()) {
+        if (activityIsAlive()) {
             try {
-                url = new URL(String.format("https://www.omdbapi.com/?apikey=3b00e127&s=%s", movieName));
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setConnectTimeout(5000);
-                connection.setReadTimeout(5000);
-                connection.connect();
+                String movieName = strings[0];
+                HttpURLConnection connection = getNewMovieSearchConnection(movieName);
 
-                if (connection.getResponseCode() <= 200) {
+                if (isConnectionResponseSuccess(connection)) {
 
-                    String apiRes = new Scanner(connection.getInputStream()).nextLine();
-                    SearchResponse response = new Gson().fromJson(apiRes, SearchResponse.class);
+                    SearchResponse response = getConnectionResponse(connection);
 
-                    if (response.getResponse().equals("True")) {
+                    if (isResponseOK(response)) {
                         return response.getSearch();
                     }
                 }
@@ -62,14 +52,69 @@ public class SearchQuery extends AsyncTask<String, Void, List<Search>> {
     protected void onPostExecute(List<Search> searches) {
         super.onPostExecute(searches);
 
-        SearchActivity context = weakReference.get();
-
-        if(searches != null && !searches.isEmpty()){
-
-            context.setList(searches);
-            context.updateData();
-        }else {
-            context.noResult();
+        if (!searchIsEmpty(searches)) {
+            returnSearchData(searches);
+        } else {
+            notifyNoResult();
         }
+    }
+
+    private boolean isResponseOK(SearchResponse response) {
+        return response.getResponse().equals("True");
+    }
+
+    private SearchResponse getConnectionResponse(HttpURLConnection connection) throws IOException {
+
+        String rawResponse = getConnectionResponseJSON(connection);
+        SearchResponse response = getResponseObjectFromJSON(rawResponse);
+        return response;
+    }
+
+    private SearchResponse getResponseObjectFromJSON(String rawResponse) {
+        Gson gson = new Gson();
+        SearchResponse searchResponse = gson.fromJson(rawResponse, SearchResponse.class);
+        return searchResponse;
+    }
+
+    private String getConnectionResponseJSON(HttpURLConnection connection) throws IOException {
+        Scanner scan = new Scanner(connection.getInputStream());
+        String rawResponse = scan.nextLine();
+        return rawResponse;
+    }
+
+    private boolean isConnectionResponseSuccess(HttpURLConnection connection) throws IOException {
+        return connection.getResponseCode() <= 200;
+    }
+
+    private HttpURLConnection getNewMovieSearchConnection(String movieName) throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) getMovieRequestURL(movieName).openConnection();
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+        return connection;
+    }
+
+    private URL getMovieRequestURL(String movieName) throws MalformedURLException {
+        return new URL(String.format("https://www.omdbapi.com/?apikey=3b00e127&s=%s", movieName));
+    }
+
+    private SearchActivity getContext() {
+        return weakReference.get();
+    }
+
+    private void notifyNoResult() {
+        getContext().noResult();
+    }
+
+    private void returnSearchData(List<Search> searches) {
+        getContext().setList(searches);
+        getContext().updateData();
+    }
+
+    private boolean searchIsEmpty(List<Search> searches) {
+        return searches == null || searches.isEmpty();
+    }
+
+    private boolean activityIsAlive() {
+        return getContext() != null || getContext().isFinishing();
     }
 }

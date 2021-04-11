@@ -1,24 +1,23 @@
 package tk.pankajb;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.bumptech.glide.Glide;
 
 import tk.pankajb.CustomWidgets.LoadingDialog;
-import tk.pankajb.Info.InformationQuery;
 import tk.pankajb.Info.InfoQueryResponse.InfoResponse;
+import tk.pankajb.Info.InformationQuery;
 import tk.pankajb.Info.PosterActivity;
 
 public class InfoActivity extends AppCompatActivity {
 
-    private String movieId;
     private ImageView poster;
     private TextView name;
     private TextView genre;
@@ -30,7 +29,6 @@ public class InfoActivity extends AppCompatActivity {
     private TextView country;
     private TextView rating;
     private String imageUrl;
-    private Toolbar toolbar;
 
     private LoadingDialog loading;
 
@@ -39,7 +37,22 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_information);
 
-        movieId = getIntent().getStringExtra("Id");
+        initializeUI();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        startInformationQueryThread();
+    }
+
+    private void startInformationQueryThread() {
+        InformationQuery query = new InformationQuery(this);
+        query.execute(getMovieIdFromIntent());
+    }
+
+    private void initializeUI() {
         poster = findViewById(R.id.mi_poster);
         name = findViewById(R.id.mi_name);
         genre = findViewById(R.id.mi_genre);
@@ -51,7 +64,17 @@ public class InfoActivity extends AppCompatActivity {
         country = findViewById(R.id.mi_country);
         rating = findViewById(R.id.mi_rating);
 
-        toolbar = findViewById(R.id.mi_toolbar);
+        setupToolbar();
+        setupLoadingDialog();
+    }
+
+    private void setupLoadingDialog() {
+        loading = new LoadingDialog(InfoActivity.this);
+        loading.startLoading();
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = findViewById(R.id.mi_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -63,12 +86,10 @@ public class InfoActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
 
-        loading = new LoadingDialog(InfoActivity.this);
-        loading.startLoading();
-
-        InformationQuery query = new InformationQuery(this);
-        query.execute(movieId);
+    private String getMovieIdFromIntent() {
+        return getIntent().getStringExtra("Id");
     }
 
     public void updateUI(InfoResponse response) {
@@ -94,12 +115,11 @@ public class InfoActivity extends AppCompatActivity {
     public void goneWrong(String msg){
 
         Intent wrongIntent = new Intent();
-
         wrongIntent.putExtra("msg",msg);
-
         setResult(400,wrongIntent);
         finish();
     }
+
     public void showPoster(View view){
         Intent intent = new Intent(InfoActivity.this, PosterActivity.class);
         intent.putExtra("imageUrl",imageUrl);

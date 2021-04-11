@@ -1,11 +1,12 @@
 package tk.pankajb.Search;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +19,7 @@ import tk.pankajb.InfoActivity;
 import tk.pankajb.R;
 import tk.pankajb.Search.SearchQueryResponse.Search;
 
-public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder> {
+public class QueryRecyclerAdapter extends RecyclerView.Adapter<QueryRecyclerAdapter.Query_ViewHolder> {
 
     private List<Search> list;
     private Activity context;
@@ -53,7 +54,7 @@ public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder>
             public void onClick(View view) {
                 Intent intent = new Intent(context, InfoActivity.class);
                 intent.putExtra("Id", list.get(position).getImdbID());
-                context.startActivityForResult(intent,1);
+                context.startActivityForResult(intent, 1);
             }
         });
     }
@@ -61,5 +62,24 @@ public class QueryRecyclerAdapter extends RecyclerView.Adapter<Query_ViewHolder>
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    class Query_ViewHolder extends RecyclerView.ViewHolder {
+
+        View view;
+        ImageView poster;
+        TextView movieNameText;
+        TextView movieYearText;
+        TextView movieTypeText;
+
+        public Query_ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            view = itemView;
+
+            poster = view.findViewById(R.id.single_resource_poster);
+            movieNameText = view.findViewById(R.id.single_resource_name);
+            movieYearText = view.findViewById(R.id.single_resource_year);
+            movieTypeText = view.findViewById(R.id.single_resource_type);
+        }
     }
 }

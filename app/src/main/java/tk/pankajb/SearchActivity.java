@@ -1,14 +1,14 @@
 package tk.pankajb;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -24,7 +24,6 @@ public class SearchActivity extends AppCompatActivity {
     private List<Search> list = null;
 
     private LoadingDialog loading;
-    private Toolbar toolbar;
 
     public void setList(List<Search> list) {
         this.list = list;
@@ -35,22 +34,29 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
-        toolbar = findViewById(R.id.search_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+        initializeUI();
 
-        loading = new LoadingDialog(SearchActivity.this);
-        loading.startLoading();
+    }
 
-        String query = getIntent().getStringExtra("movieName");
-        recyclerView = findViewById(R.id.search_rec);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+        startSearchThreadForMovie(getIntentMovieName());
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == 400) {
+            Toast.makeText(this, data.getStringExtra("msg"), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void startSearchThreadForMovie(String intentMovieName) {
         SearchQuery queryThread = new SearchQuery(SearchActivity.this);
-        queryThread.execute(query);
+        queryThread.execute(intentMovieName);
     }
 
     public void updateData() {
@@ -65,12 +71,31 @@ public class SearchActivity extends AppCompatActivity {
         finish();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    private String getIntentMovieName() {
+        return getIntent().getStringExtra("movieName");
+    }
 
-        if (requestCode==1 && resultCode == 400){
-            Toast.makeText(this, data.getStringExtra("msg"),Toast.LENGTH_LONG).show();
-        }
+    private void initializeUI() {
+        setupToolbar();
+        setupLoadingProgress();
+        setupMoviesRecycler();
+    }
+
+    private void setupMoviesRecycler() {
+        recyclerView = findViewById(R.id.search_rec);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void setupLoadingProgress() {
+        loading = new LoadingDialog(SearchActivity.this);
+        loading.startLoading();
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = findViewById(R.id.search_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
     }
 }
